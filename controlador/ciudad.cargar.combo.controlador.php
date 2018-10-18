@@ -1,0 +1,17 @@
+<?php
+
+//    require_once 'sesion.validar.controlador.php';
+
+    require_once '../negocio/Ciudad.clase.php';
+    require_once '../util/funciones/Funciones.clase.php';
+
+    try {
+        $p_codigoPais=$_POST["p_codigoPais"];
+	$obj = new Ciudad();
+        $resultado = $obj->cargarListaDatos($p_codigoPais);
+	Funciones::imprimeJSON(200, "", $resultado);
+	
+    } catch (Exception $exc) {
+	Funciones::imprimeJSON(500, $exc->getMessage(), "");
+	
+    }
